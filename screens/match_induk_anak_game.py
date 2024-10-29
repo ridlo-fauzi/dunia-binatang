@@ -10,6 +10,7 @@ from kivy.graphics import Color, Rectangle
 from kivy.clock import Clock
 from datetime import datetime, timedelta
 from kivy.uix.behaviors import ButtonBehavior
+from kivy.core.audio import SoundLoader
 import json
 import os
 import random
@@ -22,6 +23,21 @@ class MatchIndukAnakGame(Screen):
         """Mematikan backsound saat masuk ke screen ini."""
         app = App.get_running_app()
         app.stop_music()  
+
+    def play_sound_popup(self, stars):
+        """Memutar suara berdasarkan jumlah bintang."""
+        sounds = {
+            3: 'assets/music/soundPopup/perfect.mp3',
+            2: 'assets/music/soundPopup/Good.mp3',
+            1: 'assets/music/soundPopup/Okeay.mp3',
+            0: 'assets/music/soundPopup/Give_the_best.mp3'
+        }
+        
+        sound_file = sounds.get(stars)
+        if sound_file:
+            sound = SoundLoader.load(sound_file)
+            if sound:
+                sound.play()
 
     def on_leave(self):
         """Memulai kembali backsound saat meninggalkan screen ini.""" 
@@ -260,7 +276,7 @@ class MatchIndukAnakGame(Screen):
         Jika jawaban salah atau bintang 0, hanya ada tombol Kembali.
         Jika level terakhir, langsung tampilkan pop-up game selesai."""
 
-          
+        self.play_sound_popup(stars)
 
         popup_layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
         overlay_layout = BoxLayout(orientation='vertical', padding=10, spacing=10)

@@ -269,7 +269,6 @@ class TebakGambarGame(Screen):
         Jika jawaban salah atau bintang 0, hanya ada tombol Kembali.
         Jika level terakhir, langsung tampilkan pop-up game selesai."""  
 
-        # Panggil suara sesuai dengan jumlah bintang
         self.play_sound_popup(stars)
 
         popup_layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
