@@ -1,0 +1,49 @@
+{
+    "levels": {
+        "1": {
+            "image": "assets/img/induk_hewan/ayam.png",
+            "answer": "ayam",
+            "stars": "3"
+        },
+        "2": {
+            "image": "assets/img/induk_hewan/buaya.png",
+            "answer": "buaya",
+            "stars": "3"
+        },
+        "3": {
+            "image": "assets/img/induk_hewan/harimau.png",
+            "answer": "harimau",
+            "stars": "3"
+        },
+        "4": {
+            "image": "assets/img/induk_hewan/jerapah.png",
+            "answer": "jerapah",
+            "stars": "2"
+        },
+        "5": {
+            "image": "assets/img/induk_hewan/kucing.png",
+            "answer": "kucing",
+            "stars": "3"
+        },
+        "6": {
+            "image": "assets/img/induk_hewan/kuda.png",
+            "answer": "kuda",
+            "stars": "3"
+        },
+        "7": {
+            "image": "assets/img/induk_hewan/rusa.png",
+            "answer": "rusa",
+            "stars": "3"
+        },
+        "8": {
+            "image": "assets/img/induk_hewan/sapi.png",
+            "answer": "sapi",
+            "stars": "3"
+        },
+        "9": {
+            "image": "assets/img/induk_hewan/tupai.png",
+            "answer": "tupai",
+            "stars": "3"
+        }
+    }
+}

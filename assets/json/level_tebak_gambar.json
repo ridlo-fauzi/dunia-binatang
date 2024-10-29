@@ -1,0 +1,49 @@
+{
+    "levels": {
+        "1": {
+            "sound": "assets/music/soundNamaHewan/ayam.mp3",
+            "answer": "ayam",
+            "stars": "3"
+        },
+        "2": {
+            "sound": "assets/music/soundNamaHewan/buaya.mp3",
+            "answer": "buaya",
+            "stars": "3"
+        },
+        "3": {
+            "sound": "assets/music/soundNamaHewan/harimau.mp3",
+            "answer": "harimau",
+            "stars": "3"
+        },
+        "4": {
+            "sound": "assets/music/soundNamaHewan/jerapah.mp3",
+            "answer": "jerapah",
+            "stars": "1"
+        },
+        "5": {
+            "sound": "assets/music/soundNamaHewan/kucing.mp3",
+            "answer": "kucing",
+            "stars": "3"
+        },
+        "6": {
+            "sound": "assets/music/soundNamaHewan/kuda.mp3",
+            "answer": "kuda",
+            "stars": "3"
+        },
+        "7": {
+            "sound": "assets/music/soundNamaHewan/rusa.mp3",
+            "answer": "rusa",
+            "stars": "3"
+        },
+        "8": {
+            "sound": "assets/music/soundNamaHewan/lumba-lumba.mp3",
+            "answer": "lumba-lumba",
+            "stars": "3"
+        },
+        "9": {
+            "sound": "assets/music/soundNamaHewan/tupai.mp3",
+            "answer": "tupai",
+            "stars": "3"
+        }
+    }
+}
