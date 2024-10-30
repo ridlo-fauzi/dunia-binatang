@@ -7,6 +7,7 @@ from kivy.uix.image import Image
 from kivy.graphics import Color, Rectangle
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.behaviors import ButtonBehavior
+from kivy.core.audio import SoundLoader
 
 class ClickableImage(ButtonBehavior, Image):
     pass
@@ -28,6 +29,10 @@ class LevelScreenAnakInduk(Screen):
 
         background_image = Image(source="assets/img/background_level.jpg", allow_stretch=True, keep_ratio=False)
         layout.add_widget(background_image)
+
+        self.button_sound = SoundLoader.load('assets/music/soundButton/soundButton.MP3')
+        if not self.button_sound:
+            print("Error: Sound file not found or failed to load.")
 
         back_button = ClickableImage(size_hint=(None, None), size=(140, 100),
                              pos_hint={'center_x': 0.5, 'top': 1.02},
@@ -78,6 +83,13 @@ class LevelScreenAnakInduk(Screen):
 
         self.add_widget(layout)
 
+    def play_button_sound(self):
+        """Memainkan suara tombol dengan volume yang mengikuti slider SFX"""
+        app = App.get_running_app()
+        if self.button_sound:
+            self.button_sound.volume = app.sfx_volume  
+            self.button_sound.play()
+
     def load_levels_data(self):
         """Muat data level dari file JSON dan inisialisasi stars_per_level."""
         try:
@@ -104,6 +116,7 @@ class LevelScreenAnakInduk(Screen):
 
     def start_game_for_level(self, level):
         """Mulai permainan dengan level yang dipilih."""    
+        self.play_button_sound()
         match_anak_induk_game = self.manager.get_screen('match_anak_induk_game')
         match_anak_induk_game.start_game(level + 1)  
         self.manager.current = 'match_anak_induk_game'  
@@ -144,6 +157,7 @@ class LevelScreenAnakInduk(Screen):
 
     def go_back(self, instance):
         """Kembali ke layar sebelumnya.""" 
+        self.play_button_sound()
         self.manager.current = 'menu_game'
 
     def _update_rect(self, instance, value):

@@ -55,6 +55,10 @@ class MatchIndukAnakGame(Screen):
         background_image = Image(source="assets/img/background_level.jpg", allow_stretch=True, keep_ratio=False)
         self.layout.add_widget(background_image)
 
+        self.button_sound = SoundLoader.load('assets/music/soundButton/soundButton.MP3')
+        if not self.button_sound:
+            print("Error: Sound file not found or failed to load.")
+
         back_button = ClickableImage(size_hint=(None, None), size=(140, 100),
                             pos_hint={'center_x': 0.5, 'top': 1.02},
                             source='assets/img/back.png',  
@@ -98,6 +102,13 @@ class MatchIndukAnakGame(Screen):
 
         self.level = 1 
         self.completed_levels = [False] * 9
+
+    def play_button_sound(self):
+        """Memainkan suara tombol dengan volume yang mengikuti slider SFX"""
+        app = App.get_running_app()
+        if self.button_sound:
+            self.button_sound.volume = app.sfx_volume  
+            self.button_sound.play()
 
     def start_game(self, level):
         """Memulai permainan dengan level yang dipilih."""
@@ -186,6 +197,7 @@ class MatchIndukAnakGame(Screen):
 
     def check_match(self, fruit):
         """Memeriksa apakah buah yang dipilih cocok dengan pohon."""
+        self.play_button_sound()
         if self.lives > 0:
             if fruit == self.correct_fruit:
                 stars = self.calculate_stars()
@@ -232,12 +244,11 @@ class MatchIndukAnakGame(Screen):
         
         self.game_over_popup.open()
 
-        self.lives_label.text = f"Nyawa: {self.lives}/{self.max_lives}"
-
 
 
     def go_back_from_game_over(self, instance):
         """Fungsi untuk kembali ke menu pemilihan level dan menutup popup."""
+        self.play_button_sound()
         self.manager.current = 'level_screen_anak_induk'  
         if self.game_over_popup:
             self.game_over_popup.dismiss()  
@@ -254,6 +265,7 @@ class MatchIndukAnakGame(Screen):
 
     def go_back(self, instance):
         """Kembali ke layar sebelumnya."""
+        self.play_button_sound()
         self.manager.current = 'level_screen_anak_induk'
 
     def mark_level_completed(self):
@@ -276,8 +288,6 @@ class MatchIndukAnakGame(Screen):
         Jika jawaban salah atau bintang 0, hanya ada tombol Kembali.
         Jika level terakhir, langsung tampilkan pop-up game selesai."""
 
-        self.play_sound_popup(stars)
-
         popup_layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
         overlay_layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
 
@@ -292,6 +302,8 @@ class MatchIndukAnakGame(Screen):
                 background_image = 'assets/img/popup/popup_bintang_1.png'
             else:
                 background_image = 'assets/img/popup/popup_bintang_0.png'
+
+            self.play_sound_popup(stars)
 
             back_button = ClickableImage(size_hint=(None, None), size=(120, 120), source='assets/img/popup/home.png')
             back_button.bind(on_press=self.go_back_and_close_popup)
@@ -358,10 +370,12 @@ class MatchIndukAnakGame(Screen):
 
     def close_popup(self, instance):
         """Menutup popup hasil permainan."""
+        self.play_button_sound()
         self.result_popup.dismiss()  
     
     def close_popup_and_reload(self, instance):
         """Menutup popup hasil permainan."""
+        self.play_button_sound()
         self.lives = self.max_lives
         self.lives_label.source = f"assets/img/nyawa-bantuan/nyawa_{self.lives}.png" 
         self.result_popup.dismiss()  
@@ -369,6 +383,7 @@ class MatchIndukAnakGame(Screen):
 
 
     def go_to_next_level(self, instance):
+        self.play_button_sound()
         """Memulai level berikutnya setelah menyelesaikan level saat ini atau tampilkan pop-up jika game selesai."""
         self.result_popup.dismiss()  
         if self.level == len(self.completed_levels):
@@ -506,11 +521,13 @@ class MatchIndukAnakGame(Screen):
 
     def close_bantuan_popup(self, popup):
         """Menutup popup bantuan."""
+        self.play_button_sound()
         popup.dismiss()
 
 
     def use_hint(self, instance):
         """Gunakan hint untuk membantu pemain, jika tidak dalam cooldown."""
+        self.play_button_sound()
         if self.hints_left > 0 and (self.hint_last_used is None or
                                     (datetime.now() - self.hint_last_used) > timedelta(seconds=self.hint_cooldown_time)):
             self.hints_left -= 1

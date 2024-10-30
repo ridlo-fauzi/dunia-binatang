@@ -14,6 +14,7 @@ from kivy.animation import Animation
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.clock import Clock
 from kivy.lang import Builder
+from textwrap import dedent
 
 Builder.load_string(
     """
@@ -189,34 +190,38 @@ class homeScreen(Screen):
             popup_layout.add_widget(sfx_bg)
             popup_layout.add_widget(bgm_bg)
 
-            bgm_slider = Builder.load_string(
-                """
+            
+
+            bgm_slider_code = dedent(
+                f"""
 CustomSlider:
     min: 0
     max: 1
-    value: app.bgm_volume * 0.8 + 0.1 
+    value: {app.bgm_volume}
     size_hint: (0.6, None)
     height: 200
-    pos_hint: {"center_x": .6, "center_y": .57}
+    pos_hint: {{"center_x": .6, "center_y": .4}}
     cursor_size: (40, 40)
 """
             )
-            bgm_slider.bind(value=lambda instance, value: app.update_sfx_volume(value))
+            bgm_slider = Builder.load_string(bgm_slider_code)
+            bgm_slider.bind(value=lambda instance, value: app.update_bgm_volume(value))
             popup_layout.add_widget(bgm_slider)
 
-            sfx_slider = Builder.load_string(
-                """
+            sfx_slider_code = dedent(
+                f"""
 CustomSlider:
     min: 0
     max: 1
-    value: app.sfx_volume * 0.8 + 0.1
+    value: {app.sfx_volume}
     size_hint:(0.6, None)
     height: 200
-    pos_hint: {"center_x": 0.6, "center_y": 0.4}
+    pos_hint: {{"center_x": 0.6, "center_y": 0.57}}
     cursor_size: (40, 40)
 """
             )
-            sfx_slider.bind(value=lambda instance, value: app.update_bgm_volume(value))
+            sfx_slider = Builder.load_string(sfx_slider_code)
+            sfx_slider.bind(value=lambda instance, value: app.update_sfx_volume(value))
             popup_layout.add_widget(sfx_slider)
 
             close_button = ClickableImage(
@@ -225,7 +230,7 @@ CustomSlider:
                 size=(100, 100),
                 pos_hint={"right": 0.97, "top": 0.75},
             )
-            close_button.bind(on_press=lambda x: settings_popup.dismiss())
+            close_button.bind(on_press=lambda x: self.play_close_button_and_dismiss(settings_popup))
             popup_layout.add_widget(close_button)
 
             settings_popup = Popup(
@@ -241,6 +246,11 @@ CustomSlider:
 
         except Exception as e:
             print(f"Error showing settings popup: {e}")
+
+    def play_close_button_and_dismiss(self, popup):
+        """Memainkan suara tombol lalu menutup popup"""
+        self.play_button_sound()  # Memainkan suara tombol
+        popup.dismiss()
 
     def exit_app(self, instance):
         """Keluar dari aplikasi"""

@@ -18,6 +18,12 @@ class MengenalHewanGame(Screen):
         app = App.get_running_app()
         app.stop_music()  
 
+    def play_button_sound(self):
+        """Memainkan suara tombol dengan volume yang mengikuti slider SFX"""
+        app = App.get_running_app()
+        if self.button_sound:
+            self.button_sound.volume = app.sfx_volume  
+            self.button_sound.play()
 
     def on_leave(self):
         """Memulai kembali backsound saat meninggalkan screen ini.""" 
@@ -34,6 +40,10 @@ class MengenalHewanGame(Screen):
 
 
         layout = FloatLayout()
+
+        self.button_sound = SoundLoader.load('assets/music/soundButton/soundButton.MP3')
+        if not self.button_sound:
+            print("Error: Sound file not found or failed to load.")
 
         back_button = ClickableImage(size_hint=(None, None), size=(100, 80),
                         pos_hint={'x': 0, 'top': 1},
@@ -78,6 +88,7 @@ class MengenalHewanGame(Screen):
 
     def go_back(self, instance):
         """Fungsi untuk kembali ke menu game."""
+        self.play_button_sound()
         app = App.get_running_app()
         self.manager.current = 'menu_game'
 

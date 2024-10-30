@@ -5,6 +5,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.animation import Animation
 from screens.avatar import AnimatedImage
+from kivy.core.audio import SoundLoader
 
 class ClickableImage(ButtonBehavior, Image):
     def __init__(self, with_animation=True, **kwargs):
@@ -23,6 +24,10 @@ class menuGame(Screen):
         super(menuGame, self).__init__(**kwargs)
 
         menu_game_layout = FloatLayout()
+
+        self.button_sound = SoundLoader.load('assets/music/soundButton/soundButton.MP3')
+        if not self.button_sound:
+            print("Error: Sound file not found or failed to load.")
 
         bgMenu = Image(source='assets/img/Screen.png', allow_stretch=True, keep_ratio=False)
         menu_game_layout.add_widget(bgMenu)
@@ -52,6 +57,13 @@ class menuGame(Screen):
 
         self.add_widget(menu_game_layout)
 
+    def play_button_sound(self):
+        """Memainkan suara tombol dengan volume yang mengikuti slider SFX"""
+        app = App.get_running_app()
+        if self.button_sound:
+            self.button_sound.volume = app.sfx_volume  
+            self.button_sound.play()
+
     def on_enter(self):
         """Dipanggil saat layar menu game muncul. Tidak hentikan musik."""
         print("Memasuki menu game, musik tetap diputar.")
@@ -62,16 +74,20 @@ class menuGame(Screen):
 
     def go_to_mengenal_hewan(self, instance):
         """Pindah ke layar mengenal hewan"""
+        self.play_button_sound()
         self.manager.current = 'mengenal_hewan_game'
     
     def go_to_tebak_suara(self, instance):
         """Pindah ke layar mengenal hewan"""
+        self.play_button_sound()
         self.manager.current = 'level_screen_tebak_gambar'
 
     def go_to_mengenal_induk(self, instance):
         """Pindah ke layar game"""
+        self.play_button_sound()
         self.manager.current = 'level_screen_anak_induk'
 
     def go_back_to_main_menu(self, instance):
         """Kembali ke menu utama"""
+        self.play_button_sound()
         self.manager.current = 'main_menu'
