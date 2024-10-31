@@ -18,12 +18,12 @@
         "4": {
             "image": "assets/img/induk_hewan/jerapah.png",
             "answer": "jerapah",
-            "stars": "0"
+            "stars": "3"
         },
         "5": {
             "image": "assets/img/induk_hewan/kucing.png",
             "answer": "kucing",
-            "stars": "terkunci"
+            "stars": "0"
         },
         "6": {
             "image": "assets/img/induk_hewan/kuda.png",

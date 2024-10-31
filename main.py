@@ -14,7 +14,6 @@ from screens.LevelScreen_anak_induk import LevelScreenAnakInduk
 class TebakGambarApp(App):
 
     def build(self):
-        Window.size = (360, 640)
         self.sm = ScreenManager(transition=FadeTransition())
 
         splash_screen = SplashScreen(name='splash')

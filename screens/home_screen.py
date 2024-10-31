@@ -83,15 +83,15 @@ class homeScreen(Screen):
 
         bgAwal = Image(source='assets/img/background.JPG', allow_stretch=True, keep_ratio=False)
         main_menu_layout.add_widget(bgAwal)
-        logoTebakGambar = Image(source='assets/img/logo.png', size_hint=(None, None), size=(150, 150),
+        logoTebakGambar = Image(source='assets/img/logo.png', size_hint=(None, None), size=(600, 600),
                                 pos_hint={'center_x': 0.5, 'center_y': 0.8})
         main_menu_layout.add_widget(logoTebakGambar)
 
-        self.mulaiBTn = ClickableImage(size_hint=(None, None), size=(230, 230),
+        self.mulaiBTn = ClickableImage(size_hint=(None, None), size=(500, 500),
                                     pos_hint={'center_x': 0.5, 'center_y': 0.5},
                                     source='assets/img/play.png')
 
-        keluarBTn = ClickableImage(size_hint=(None, None), size=(70, 70),
+        keluarBTn = ClickableImage(size_hint=(None, None), size=(400, 400),
                 pos_hint={'right': 1, 'top': 1},
                 source='assets/img/exit.png')
 
@@ -103,7 +103,7 @@ class homeScreen(Screen):
 
         print("Menambahkan tombol settings...")  
         try:
-            self.settings_button = ClickableImage(source='assets/gif/setting.gif', size_hint=(None, None), size=(70, 70),
+            self.settings_button = ClickableImage(source='assets/gif/setting.gif', size_hint=(None, None), size=(400, 400),
                     pos_hint={'x': 0.02, 'top': 1})  
             self.settings_button.bind(on_press=self.play_button_and_settings)
             main_menu_layout.add_widget(self.settings_button)
@@ -116,7 +116,7 @@ class homeScreen(Screen):
         self.animate_play_button()
 
     def animate_play_button(self):
-        anim = Animation(size=(230, 230), duration=1) + Animation(size=(150, 150), duration=1)
+        anim = Animation(size=(450, 450), duration=1) + Animation(size=(400, 400), duration=1)
         anim.repeat = True  
         anim.start(self.mulaiBTn)
 

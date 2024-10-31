@@ -32,7 +32,7 @@ class menuGame(Screen):
         bgMenu = Image(source='assets/img/Screen.png', allow_stretch=True, keep_ratio=False)
         menu_game_layout.add_widget(bgMenu)
 
-        back_button = ClickableImage(size_hint=(None, None), size=(100, 100),
+        back_button = ClickableImage(size_hint=(None, None), size=(400, 400),
             pos_hint={'x': 0.02, 'top': 0.98},
             source='assets/img/back.png', with_animation=False)  
         back_button.bind(on_press=self.go_back_to_main_menu)
