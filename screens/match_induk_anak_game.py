@@ -79,7 +79,7 @@ class MatchIndukAnakGame(Screen):
         self.wrong_attempts = 0  
 
         self.lives_label = Image(source=f"assets/img/nyawa-bantuan/nyawa_{self.lives}.png", 
-                         size_hint=(None, None), size=(130, 130), 
+                         size_hint=(None, None), size=(200, 200), 
                          pos_hint={'center_x': 0.15, 'top': 1.05}
                          )
         self.layout.add_widget(self.lives_label)
@@ -89,7 +89,7 @@ class MatchIndukAnakGame(Screen):
                                    pos_hint={'center_x': 0.5, 'center_y': 0.4})
         self.layout.add_widget(self.fruit_box)
 
-        self.hint_button = ClickableImage(source=f"assets/img/nyawa-bantuan/bantuan_{self.hints_left}.png", size_hint=(None, None), size=(140, 170),
+        self.hint_button = ClickableImage(source=f"assets/img/nyawa-bantuan/bantuan_{self.hints_left}.png", size_hint=(None, None), size=(200, 250),
                                   pos_hint={'center_x': 0.85, 'top': 1.08})
         self.hint_button.bind(on_press=self.use_hint)
         self.layout.add_widget(self.hint_button)
@@ -305,18 +305,18 @@ class MatchIndukAnakGame(Screen):
 
             self.play_sound_popup(stars)
 
-            back_button = ClickableImage(size_hint=(None, None), size=(120, 120), source='assets/img/popup/home.png')
+            back_button = ClickableImage(size_hint=(None, None), size=(200, 200), source='assets/img/popup/home.png')
             back_button.bind(on_press=self.go_back_and_close_popup)
             back_button.pos_hint = {'x': 0.12, 'center_y': 0.3}  
             button_layout.add_widget(back_button)
 
             if stars > 0:
-                next_button = ClickableImage(size_hint=(None, None), size=(120, 120), source='assets/img/popup/next.png')
+                next_button = ClickableImage(size_hint=(None, None), size=(200, 200), source='assets/img/popup/next.png')
                 next_button.bind(on_press=self.go_to_next_level)
                 next_button.pos_hint = {'right': 0.88, 'center_y': 0.3}  
                 button_layout.add_widget(next_button)
             else : 
-                close_button = ClickableImage(size_hint=(None, None), size=(120, 120), source='assets/img/popup/ulang.png')
+                close_button = ClickableImage(size_hint=(None, None), size=(200, 200), source='assets/img/popup/ulang.png')
                 close_button.bind(on_press=self.close_popup_and_reload)
                 close_button.pos_hint = {'right': 0.88, 'center_y': 0.3}
                 button_layout.add_widget(close_button)
@@ -324,7 +324,7 @@ class MatchIndukAnakGame(Screen):
         else:
             background_image = 'assets/img/popup/POPUP_SALAH.png'
             
-            close_button = ClickableImage(size_hint=(None, None), size=(120, 120), source='assets/img/popup/ulang.png')
+            close_button = ClickableImage(size_hint=(None, None), size=(200, 200), source='assets/img/popup/ulang.png')
             close_button.bind(on_press=self.close_popup)
             
             close_button.pos_hint = {'center_x': 0.5, 'center_y': 0.3}
@@ -404,7 +404,7 @@ class MatchIndukAnakGame(Screen):
 
         home_button = ClickableImage(
             size_hint=(None, None), 
-            size=(85, 90), 
+            size=(200, 210), 
             source='assets/img/popup/home.png', 
             pos_hint={'center_x': 0.5, 'top': 0.36}  
         )
@@ -450,7 +450,7 @@ class MatchIndukAnakGame(Screen):
         
         popup_layout.add_widget(overlay_layout)
         
-        close_button = ClickableImage(size_hint=(None, None), size=(120, 120), 
+        close_button = ClickableImage(size_hint=(None, None), size=(200, 200), 
                             source='assets/img/x.png', pos_hint={'right': 0.98, 'top': 0.88})
         close_button.bind(on_press=lambda *args: self.close_bantuan_popup(popup))
         popup_layout.add_widget(close_button)
@@ -502,7 +502,7 @@ class MatchIndukAnakGame(Screen):
         
         popup_layout.add_widget(overlay_layout)
         
-        close_button = ClickableImage(size_hint=(None, None), size=(120, 120), 
+        close_button = ClickableImage(size_hint=(None, None), size=(200, 200), 
                             source='assets/img/x.png', pos_hint={'right': 0.98, 'top': 0.88})
         close_button.bind(on_press=lambda *args: self.close_bantuan_popup(popup))
         popup_layout.add_widget(close_button)
