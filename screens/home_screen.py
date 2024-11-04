@@ -227,7 +227,7 @@ CustomSlider:
             close_button = ClickableImage(
                 source="assets/img/x.png",
                 size_hint=(None, None),
-                size=(100, 100),
+                size=(200, 200),
                 pos_hint={"right": 0.97, "top": 0.75},
             )
             close_button.bind(on_press=lambda x: self.play_close_button_and_dismiss(settings_popup))
