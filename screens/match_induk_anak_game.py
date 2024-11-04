@@ -59,7 +59,7 @@ class MatchIndukAnakGame(Screen):
         if not self.button_sound:
             print("Error: Sound file not found or failed to load.")
 
-        back_button = ClickableImage(size_hint=(None, None), size=(140, 100),
+        back_button = ClickableImage(size_hint=(None, None), size=(250, 200),
                             pos_hint={'center_x': 0.5, 'top': 1.02},
                             source='assets/img/back.png',  
                             ) 
@@ -86,7 +86,7 @@ class MatchIndukAnakGame(Screen):
 
 
         self.fruit_box = BoxLayout(orientation='horizontal', size_hint=(0.8, None), height=100,
-                                   pos_hint={'center_x': 0.5, 'center_y': 0.4})
+                                   pos_hint={'center_x': 0.6, 'center_y': 0.4})
         self.layout.add_widget(self.fruit_box)
 
         self.hint_button = ClickableImage(source=f"assets/img/nyawa-bantuan/bantuan_{self.hints_left}.png", size_hint=(None, None), size=(200, 250),
@@ -432,8 +432,8 @@ class MatchIndukAnakGame(Screen):
         self.float_container = FloatLayout(size_hint=(1, None), height=200)  
         
         if show_image:
-            hewan_image = Image(source=f"assets/img/siluet/{self.correct_fruit}_siluet.png", size_hint=(None, None), size=(150, 150),
-                                pos_hint={'center_x': 0.5, 'center_y': 0.4})  
+            hewan_image = Image(source=f"assets/img/siluet/{self.correct_fruit}_siluet.png", size_hint=(None, None), size=(300, 300),
+                                pos_hint={'center_x': 0.5, 'center_y': 0.5})  
             self.float_container.add_widget(hewan_image)
         else:
             remaining_time = self.hint_cooldown_time - (datetime.now() - self.hint_last_used).seconds

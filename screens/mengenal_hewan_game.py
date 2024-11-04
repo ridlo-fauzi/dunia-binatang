@@ -45,7 +45,7 @@ class MengenalHewanGame(Screen):
         if not self.button_sound:
             print("Error: Sound file not found or failed to load.")
 
-        back_button = ClickableImage(size_hint=(None, None), size=(100, 80),
+        back_button = ClickableImage(size_hint=(None, None), size=(250, 200),
                         pos_hint={'x': 0, 'top': 1},
                         source='assets/img/back.png')
         back_button.bind(on_press=self.go_back)

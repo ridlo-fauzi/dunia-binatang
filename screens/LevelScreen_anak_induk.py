@@ -34,7 +34,7 @@ class LevelScreenAnakInduk(Screen):
         if not self.button_sound:
             print("Error: Sound file not found or failed to load.")
 
-        back_button = ClickableImage(size_hint=(None, None), size=(400, 400),
+        back_button = ClickableImage(size_hint=(None, None), size=(250, 200),
                              pos_hint={'center_x': 0.5, 'top': 1.02},
                              source='assets/img/back.png')
         back_button.bind(on_press=self.go_back)
@@ -60,7 +60,7 @@ class LevelScreenAnakInduk(Screen):
             else:
                 level_image_source = f"assets/img/level/level_{i+1}_terkunci.png" 
 
-            level_image = Image(source=level_image_source, size_hint=(None, None), size=(400, 400), pos_hint={'center_x': 0.5, 'top': 0.90})
+            level_image = Image(source=level_image_source, size_hint=(None, None), size=(200, 200), pos_hint={'center_x': 0.5, 'top': 0.90})
 
             self.level_buttons.append(level_image)
 

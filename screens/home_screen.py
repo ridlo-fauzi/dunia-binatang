@@ -81,7 +81,7 @@ class homeScreen(Screen):
         """Membangun layout UI setelah transisi splash screen selesai"""
         main_menu_layout = FloatLayout()
 
-        bgAwal = Image(source='assets/img/background.JPG', allow_stretch=True, keep_ratio=False)
+        bgAwal = Image(source='assets/img/background.jpg', allow_stretch=True, keep_ratio=False)
         main_menu_layout.add_widget(bgAwal)
         logoTebakGambar = Image(source='assets/img/logo.png', size_hint=(None, None), size=(600, 600),
                                 pos_hint={'center_x': 0.5, 'center_y': 0.8})
@@ -91,7 +91,7 @@ class homeScreen(Screen):
                                     pos_hint={'center_x': 0.5, 'center_y': 0.5},
                                     source='assets/img/play.png')
 
-        keluarBTn = ClickableImage(size_hint=(None, None), size=(400, 400),
+        keluarBTn = ClickableImage(size_hint=(None, None), size=(200, 200),
                 pos_hint={'right': 1, 'top': 1},
                 source='assets/img/exit.png')
 
@@ -103,7 +103,7 @@ class homeScreen(Screen):
 
         print("Menambahkan tombol settings...")  
         try:
-            self.settings_button = ClickableImage(source='assets/gif/setting.gif', size_hint=(None, None), size=(400, 400),
+            self.settings_button = ClickableImage(source='assets/gif/setting.gif', size_hint=(None, None), size=(200, 200),
                     pos_hint={'x': 0.02, 'top': 1})  
             self.settings_button.bind(on_press=self.play_button_and_settings)
             main_menu_layout.add_widget(self.settings_button)
@@ -227,7 +227,7 @@ CustomSlider:
             close_button = ClickableImage(
                 source="assets/img/x.png",
                 size_hint=(None, None),
-                size=(200, 200),
+                size=(100, 100),
                 pos_hint={"right": 0.97, "top": 0.75},
             )
             close_button.bind(on_press=lambda x: self.play_close_button_and_dismiss(settings_popup))
