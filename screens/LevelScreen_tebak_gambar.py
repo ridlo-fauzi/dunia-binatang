@@ -27,7 +27,7 @@ class LevelScreenTebakGambar(Screen):
 
         layout = FloatLayout()
 
-        background_image = Image(source="assets/img/background_level.jpg", allow_stretch=True, keep_ratio=False)
+        background_image = Image(source="assets/img/level/background_level.png", allow_stretch=True, keep_ratio=False)
         layout.add_widget(background_image)
 
         self.button_sound = SoundLoader.load('assets/music/soundButton/soundButton.MP3')
@@ -35,13 +35,11 @@ class LevelScreenTebakGambar(Screen):
             print("Error: Sound file not found or failed to load.")
 
         back_button = ClickableImage(size_hint=(None, None), size=(250, 200),
-                             pos_hint={'center_x': 0.5, 'top': 1.02},
+                             pos_hint={'center_x': 0.5, 'top': 1},
                              source='assets/img/back.png')
         back_button.bind(on_press=self.go_back)
         layout.add_widget(back_button)
-
-        title = Image(source="assets/img/level.png", size_hint=(None, None), size=(1000, 250), pos_hint={'center_x': 0.5, 'top': 0.9})
-        layout.add_widget(title) 
+ 
 
         button_positions = [
             (0.25, 0.60), (0.55, 0.60), (0.85, 0.60),

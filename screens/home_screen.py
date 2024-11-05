@@ -116,7 +116,7 @@ class homeScreen(Screen):
         self.animate_play_button()
 
     def animate_play_button(self):
-        anim = Animation(size=(450, 450), duration=1) + Animation(size=(400, 400), duration=1)
+        anim = Animation(size=(500, 500), duration=1) + Animation(size=(400, 400), duration=1)
         anim.repeat = True  
         anim.start(self.mulaiBTn)
 

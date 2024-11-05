@@ -52,7 +52,7 @@ class MatchIndukAnakGame(Screen):
             self.bind(size=self._update_rect, pos=self._update_rect)
         self.layout = FloatLayout()
 
-        background_image = Image(source="assets/img/background_level.jpg", allow_stretch=True, keep_ratio=False)
+        background_image = Image(source="assets/img/background_game.jpg", allow_stretch=True, keep_ratio=False)
         self.layout.add_widget(background_image)
 
         self.button_sound = SoundLoader.load('assets/music/soundButton/soundButton.MP3')
@@ -60,7 +60,7 @@ class MatchIndukAnakGame(Screen):
             print("Error: Sound file not found or failed to load.")
 
         back_button = ClickableImage(size_hint=(None, None), size=(250, 200),
-                            pos_hint={'center_x': 0.5, 'top': 1.02},
+                            pos_hint={'center_x': 0.5, 'top': 1},
                             source='assets/img/back.png',  
                             ) 
         back_button.bind(on_press=self.go_back)
@@ -80,17 +80,17 @@ class MatchIndukAnakGame(Screen):
 
         self.lives_label = Image(source=f"assets/img/nyawa-bantuan/nyawa_{self.lives}.png", 
                          size_hint=(None, None), size=(200, 200), 
-                         pos_hint={'center_x': 0.15, 'top': 1.05}
+                         pos_hint={'center_x': 0.15, 'top': 1}
                          )
         self.layout.add_widget(self.lives_label)
 
 
         self.fruit_box = BoxLayout(orientation='horizontal', size_hint=(0.8, None), height=100,
-                                   pos_hint={'center_x': 0.6, 'center_y': 0.4})
+                                   pos_hint={'center_x': 0.8, 'center_y': 0.4})
         self.layout.add_widget(self.fruit_box)
 
         self.hint_button = ClickableImage(source=f"assets/img/nyawa-bantuan/bantuan_{self.hints_left}.png", size_hint=(None, None), size=(200, 250),
-                                  pos_hint={'center_x': 0.85, 'top': 1.08})
+                                  pos_hint={'center_x': 0.85, 'top': 1})
         self.hint_button.bind(on_press=self.use_hint)
         self.layout.add_widget(self.hint_button)
 
@@ -152,7 +152,7 @@ class MatchIndukAnakGame(Screen):
 
         self.fruit_box.clear_widgets()
         for fruit in random_fruits:
-            fruit_button = Button(size_hint=(None, 1), width=100, background_normal=f"assets/img/hewan/{fruit}.png")
+            fruit_button = Button(size_hint=(None, 1), width=250, background_normal=f"assets/img/hewan/{fruit}.png")
             fruit_button.bind(on_press=lambda instance, fruit=fruit: self.check_match(fruit))
             self.fruit_box.add_widget(fruit_button)
 

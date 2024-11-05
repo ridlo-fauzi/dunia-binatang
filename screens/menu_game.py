@@ -15,7 +15,7 @@ class ClickableImage(ButtonBehavior, Image):
 
     def animate_button(self):
         """Animasi berulang zoom in dan zoom out"""
-        anim = Animation(size=(450, 450), duration=2) + Animation(size=(400, 400), duration=1)
+        anim = Animation(size=(550, 550), duration=2) + Animation(size=(450, 450), duration=1)
         anim.repeat = True 
         anim.start(self)
 
@@ -38,7 +38,7 @@ class menuGame(Screen):
         back_button.bind(on_press=self.go_back_to_main_menu)
         menu_game_layout.add_widget(back_button)
 
-        button_size = (500, 450)
+        button_size = (550, 450)
 
         button_mengenalHewan = ClickableImage(size_hint=(None, None), size=button_size, source='assets/img/menuGame/mengenalHewann.png')
         button_mengenalHewan.pos_hint = {'x': 0.05, 'y': 0.5}

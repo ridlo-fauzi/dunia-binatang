@@ -46,12 +46,12 @@ class MengenalHewanGame(Screen):
             print("Error: Sound file not found or failed to load.")
 
         back_button = ClickableImage(size_hint=(None, None), size=(250, 200),
-                        pos_hint={'x': 0, 'top': 0.5},
+                        pos_hint={'x': 0.02, 'top': 1},
                         source='assets/img/back.png')
         back_button.bind(on_press=self.go_back)
         layout.add_widget(back_button)
 
-        scroll_view = ScrollView(size_hint=(0.9, 0.75), pos_hint={'center_x': 0.5, 'center_y': 0.55})
+        scroll_view = ScrollView(size_hint=(0.9, 0.75), pos_hint={'center_x': 0.5, 'center_y': 0.5})
 
         image_grid = GridLayout(cols=2, padding=20, spacing=20, size_hint_y=None)
         image_grid.bind(minimum_height=image_grid.setter('height'))
